@@ -1,0 +1,51 @@
+# Template file for 'river-git'
+pkgname=river-git
+conflicts="river"
+version=0.4.0.r75.gd4fef52
+revision=1
+archs="~i686* ~armv6l* ~armv7l*"
+build_style=zig-build
+configure_args="$(vopt_if xwayland -Dxwayland) -Dpie"
+hostmakedepends="pkg-config wayland-devel scdoc git rsync"
+makedepends="wlroots0.20-devel libevdev-devel pixman-devel
+ wayland-protocols libxkbcommon-devel wayland-devel"
+depends="$(vopt_if xwayland xorg-server-xwayland)"
+short_desc="Dynamic tiling Wayland compositor (git master)"
+maintainer="Isaac Freund <mail@isaacfreund.com>"
+license="GPL-3.0-only"
+homepage="https://codeberg.org/river/river"
+
+build_options="xwayland"
+build_options_default="xwayland"
+desc_option_xwayland="Enable Xwayland support"
+
+do_fetch() {
+	cd ${XBPS_SRCDISTDIR}
+	git clone ${homepage} ${pkgname} || true
+	cd ${pkgname}
+	git fetch origin main
+	git reset --hard origin/main
+	git submodule update --init
+}
+
+do_extract() {
+	rsync -a ${XBPS_SRCDISTDIR}/${pkgname}/ ${wrksrc}/
+}
+
+# Use host zig (0.16.x via zvm) instead of void-packages zig 0.13.0
+do_build() {
+	DESTDIR="zig-out" /host/zig-install/zig build \
+		-j${XBPS_MAKEJOBS} \
+		--prefix /usr \
+		--global-cache-dir /host/zig-cache \
+		--release=safe \
+		${configure_args}
+}
+
+do_install() {
+	cp -r zig-out/* "${DESTDIR}"
+}
+
+post_install() {
+	vinstall contrib/river.desktop 644 usr/share/wayland-sessions
+}
