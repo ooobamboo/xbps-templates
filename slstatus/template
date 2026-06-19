@@ -1,0 +1,14 @@
+# Template file for 'slstatus'
+pkgname=slstatus
+version=1.1
+revision=1
+_commit=6803bdcae5a317c117c53766b0805816bb874564
+build_style=gnu-makefile
+makedepends="libX11-devel"
+short_desc="Suckless status monitor for dwm and other WMs"
+maintainer="seriola <aloires@tutamail.com>"
+license="ISC"
+homepage="https://github.com/ooobamboo/slstatus"
+distfiles="https://github.com/ooobamboo/slstatus/archive/${_commit}.tar.gz"
+wrksrc="${pkgname}-${_commit}"
+checksum=41b65c1556249b3a86c0326068a5476e81b43ec02771cb98bb459b07d7dae65b
