@@ -1,0 +1,15 @@
+# Template file for 'wawa'
+pkgname=wawa
+version=1.0
+revision=1
+_commit=249f43876d05f73cc1ba9c51235a32f058478e8c
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-devel"
+makedepends="wayland-devel wayland-protocols"
+short_desc="Simple hackable Wayland wallpaper setter"
+maintainer="sewn <sewn@disroot.org>"
+license="MIT"
+homepage="https://codeberg.org/sewn/wawa"
+distfiles="https://codeberg.org/sewn/wawa/archive/${_commit}.tar.gz"
+wrksrc="${pkgname}"
+checksum=c7f6ecc77d307429256b43deb913c81c31974847f527d64756426e73ce966602

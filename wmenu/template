@@ -1,0 +1,16 @@
+# Template file for 'wmenu'
+pkgname=wmenu
+version=0.2.0
+revision=1
+_commit=c7d5cbc501b5a2835f09aa33e0dbd869c43f6649
+build_style=meson
+hostmakedepends="pkg-config wayland-devel scdoc"
+makedepends="cairo-devel pango-devel wayland-devel wayland-protocols
+ libxkbcommon-devel"
+short_desc="Efficient dynamic menu for Sway/wlroots (Wayland)"
+maintainer="seriola <aloires@tutamail.com>"
+license="MIT"
+homepage="https://github.com/ooobamboo/wmenu"
+distfiles="https://github.com/ooobamboo/wmenu/archive/${_commit}.tar.gz"
+wrksrc="${pkgname}-${_commit}"
+checksum=483c10ee608c6ecfa107341a1c08fced0ff411e58af6e6de33b9bda64ecef181

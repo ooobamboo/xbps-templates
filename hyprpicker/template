@@ -1,0 +1,16 @@
+# Template file for 'hyprpicker'
+pkgname=hyprpicker
+version=0.4.7
+revision=1
+_commit=b7fb2d41b66102df36cc3128a04c228873574052
+build_style=cmake
+hostmakedepends="pkg-config hyprwayland-scanner"
+makedepends="wayland-devel wayland-protocols libxkbcommon-devel
+ cairo-devel pango-devel libjpeg-turbo-devel hyprutils"
+short_desc="wlroots-compatible Wayland color picker"
+maintainer="seriola <aloires@tutamail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/ooobamboo/hyprpicker"
+distfiles="https://github.com/ooobamboo/hyprpicker/archive/${_commit}.tar.gz"
+wrksrc="${pkgname}-${_commit}"
+checksum=dfbfe77a35de8758aba595199c58749f9eaf4c5b8c6a4c121414aee51ad13861
