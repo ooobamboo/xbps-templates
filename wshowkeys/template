@@ -1,0 +1,16 @@
+# Template file for 'wshowkeys'
+pkgname=wshowkeys
+version=0.1.0
+revision=1
+_commit=c4a790db82aeb3326b4ba2755ed5fb042c94ce5e
+build_style=meson
+hostmakedepends="pkg-config wayland-devel"
+makedepends="cairo-devel libinput-devel pango-devel eudev-libudev-devel
+ wayland-devel wayland-protocols libxkbcommon-devel"
+short_desc="Displays keypresses on screen (Wayland)"
+maintainer="seriola <aloires@tutamail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/ooobamboo/wshowkeys"
+distfiles="https://github.com/ooobamboo/wshowkeys/archive/${_commit}.tar.gz"
+wrksrc="${pkgname}-${_commit}"
+checksum=cdc798ebdbd1701fc4f7621fcb5720ead76c5da4730055197f49b8312a8f7603
