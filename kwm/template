@@ -1,0 +1,38 @@
+# Template file for 'kwm'
+pkgname=kwm
+version=0.3.0
+revision=1
+build_style=zig-build
+configure_args="-Dpie"
+hostmakedepends="pkg-config wayland-protocols git rsync"
+makedepends="wayland-devel libxkbcommon-devel pixman-devel fcft-devel"
+short_desc="DWM-like dynamic tiling window manager for River (Wayland)"
+maintainer="seriola <aloires@tutamail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/ooobamboo/kwm"
+
+do_fetch() {
+	cd ${XBPS_SRCDISTDIR}
+	git clone ${homepage} ${pkgname} || true
+	cd ${pkgname}
+	git fetch origin master
+	git reset --hard origin/master
+}
+
+do_extract() {
+	rsync -a ${XBPS_SRCDISTDIR}/${pkgname}/ ${wrksrc}/
+}
+
+# Use host zig (0.16.x via zvm) instead of void-packages zig 0.13.0
+do_build() {
+	DESTDIR="zig-out" /host/zig-install/zig build \
+		-j${XBPS_MAKEJOBS} \
+		--prefix /usr \
+		--global-cache-dir /host/zig-cache \
+		--release=safe \
+		${configure_args}
+}
+
+do_install() {
+	cp -r zig-out/* "${DESTDIR}"
+}
