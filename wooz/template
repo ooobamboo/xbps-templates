@@ -1,7 +1,7 @@
 # Template file for 'wooz'
 pkgname=wooz
 version=0.1.0
-revision=1
+revision=2
 build_style=meson
 hostmakedepends="pkg-config wayland-devel"
 makedepends="wayland-devel wayland-protocols"
@@ -9,5 +9,6 @@ short_desc="Screen zoom / magnifier utility for Wayland"
 maintainer="Alexandre Negrel <alexandre@negrel.dev>"
 license="MIT"
 homepage="https://github.com/negrel/wooz"
-distfiles="https://github.com/negrel/wooz/archive/v${version}.tar.gz"
-checksum=ebd62375eb74ea238663052d4540ea36479f794efd271801e4ec7f260d06aa47
+_distfile="24e2856bf2cc13810f00971ae143973840555321"
+distfiles="https://github.com/negrel/wooz/archive/${_distfile}.tar.gz"
+checksum=4286f17ab328d70c15c667850b15c8c08892dac9cc9e440c58e252c06c74dff8
