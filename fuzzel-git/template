@@ -1,0 +1,26 @@
+# Template file for 'fuzzel-git'
+pkgname=fuzzel-git
+version=1.14.1.23.g6ffec82
+revision=1
+conflicts="fuzzel"
+build_style=meson
+configure_args="-Dsvg-backend=nanosvg -Denable-cairo=disabled"
+hostmakedepends="pkg-config scdoc wayland-devel git rsync"
+makedepends="fcft-devel libpng-devel
+ libxkbcommon-devel pixman-devel tllist wayland-devel wayland-protocols"
+short_desc="Application launcher for wlroots based Wayland compositors (git master)"
+maintainer="Daniel Eklöf <daniel@ekloef.se>"
+license="MIT"
+homepage="https://codeberg.org/dnkl/fuzzel"
+
+do_fetch() {
+	cd ${XBPS_SRCDISTDIR}
+	git clone ${homepage} ${pkgname} || true
+	cd ${pkgname}
+	git fetch origin master
+	git reset --hard origin/master
+}
+
+do_extract() {
+	rsync -a ${XBPS_SRCDISTDIR}/${pkgname}/ ${wrksrc}/
+}
