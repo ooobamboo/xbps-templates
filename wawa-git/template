@@ -1,0 +1,18 @@
+# Template file for 'wawa-git'
+pkgname=wawa-git
+version=ca2ae863d9f31142eedde35c8c64596ee4a568ab
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-devel"
+makedepends="wayland-devel wayland-protocols"
+short_desc="Simple hackable Wayland wallpaper setter (git master)"
+maintainer="sewn <sewn@disroot.org>"
+license="MIT"
+homepage="https://github.com/ooobamboo/wawa"
+distfiles="${homepage}/archive/${version}.tar.gz"
+wrksrc="wawa-${version}"
+checksum=c3636d4b5f65e5a08fb95d4e9b8776b53e71616696a2a1458b4f1bb1bac393ba
+
+post_install() {
+	vlicense LICENSE
+}

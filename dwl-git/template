@@ -1,0 +1,20 @@
+# Template file for 'dwl-git'
+pkgname=dwl-git
+version=54b0f8346bccd884f9619fbc0172a048222a5ae4
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-protocols wayland-devel"
+makedepends="wlroots0.20-devel libxkbcommon-devel libinput-devel pixman-devel
+ fcft-devel libxcb-devel xcb-util-wm-devel"
+short_desc="dwm-like dynamic tiling window manager for Wayland (git master)"
+maintainer="seriola <aloires@tutamail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/ooobamboo/dwl"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=a176db08e162bab695c6ec3dff4bf7563c1d2e819eb4f37d4f886179aeb65bb5
+wrksrc="dwl-${version}"
+
+post_install() {
+	vlicense LICENSE
+	vman dwl.1
+}

@@ -1,0 +1,18 @@
+# Template file for 'wlock-git'
+pkgname=wlock-git
+version=c1d159a83391b11efbd85e76c30e8d39ae66e2dd
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-devel"
+makedepends="wayland-devel libxkbcommon-devel libxcrypt-devel wayland-protocols"
+short_desc="Itsy-bitsy session locker for Wayland (git master)"
+maintainer="sewn <sewn@disroot.org>"
+license="MIT"
+homepage="https://github.com/ooobamboo/wlock"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=cd14d97c2edd1c20d308eddac08b72a42a7876e9b320efc9cf92fb3de3e3515f
+wrksrc="wlock-${version}"
+
+post_install() {
+	vlicense LICENSE
+}

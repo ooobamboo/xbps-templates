@@ -1,0 +1,21 @@
+# Template file for 'lenopow-git'
+pkgname=lenopow-git
+version=47f1ed23136579f7e3005f95bda33940018f8778
+revision=1
+build_style=gnu-makefile
+short_desc="Manage Lenovo Ideapad/LEGION battery conservation mode"
+maintainer="seriola <aloires@tutamail.com>"
+license="Unlicense"
+homepage="https://github.com/schinfo/lenopow"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=e0a2d10f872794ec7b12abb5d0f439d44008f38d88c16de4decfe5f175509850
+wrksrc="lenopow-${version}"
+
+# The Makefile's first target is 'install'; there is nothing to compile.
+do_build() {
+	:
+}
+
+post_install() {
+	vlicense LICENSE
+}

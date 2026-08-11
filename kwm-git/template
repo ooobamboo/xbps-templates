@@ -1,0 +1,36 @@
+# Template file for 'kwm-git'
+pkgname=kwm-git
+version=f8355179dd9f115b78e296885c5790a9d81dd0de
+revision=1
+build_style=zig-build
+configure_args="-Dpie"
+hostmakedepends="pkg-config wayland-protocols"
+makedepends="wayland-devel libxkbcommon-devel pixman-devel fcft-devel"
+short_desc="DWM-like dynamic tiling window manager for River (git master)"
+maintainer="seriola <aloires@tutamail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/ooobamboo/kwm"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=5482f36221fa73d9e1d802a1a68c5def4cf36510db03b5ff075f2dccbfd4fc11
+wrksrc="kwm-${version}"
+
+# Use host zig (0.16.x via zvm) instead of void-packages zig 0.13.0.
+# /void-packages and /host are the host dirs bind-mounted into the chroot.
+do_build() {
+	export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+	DESTDIR="zig-out" /void-packages/zig-install/zig build \
+		-j${XBPS_MAKEJOBS} \
+		--prefix /usr \
+		--global-cache-dir /host/zig-cache \
+		--release=safe \
+		${configure_args}
+}
+
+do_install() {
+	cp -r zig-out/* "${DESTDIR}"
+}
+
+post_install() {
+	vlicense LICENSE
+	vman doc/kwm.1
+}
