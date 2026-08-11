@@ -1,6 +1,6 @@
 # Template file for 'wawa-git'
 pkgname=wawa-git
-version=ca2ae863d9f31142eedde35c8c64596ee4a568ab
+version=e6d23e7e095b2055266a138485348bf97deebe06
 revision=1
 build_style=gnu-makefile
 hostmakedepends="pkg-config wayland-devel"
