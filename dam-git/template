@@ -1,0 +1,26 @@
+# Template file for 'dam-git'
+pkgname=dam-git
+version=74baabffadfba96226aa1a1dc2c29c93e81bb008
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config wayland-devel wayland-protocols"
+makedepends="wayland-devel wayland-protocols fcft-devel pixman-devel"
+short_desc="Itsy-bitsy dwm-esque bar for river (git master)"
+maintainer="sewn <sewn@disroot.org>"
+license="MIT"
+homepage="https://github.com/ooobamboo/dam"
+distfiles="${homepage}/archive/${version}.tar.gz
+ https://github.com/ooobamboo/drwl/archive/28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz"
+checksum="6e767555d085d33c06db507f8939557472edbe5990a68428537c80fc6f5b88fc
+ 4117d9c9796f1cd9c95d9ee817b98282e722833ca1b057e7a2d9467181bb0a33"
+skip_extraction="28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz"
+wrksrc="dam-${version}"
+
+post_extract() {
+	vsrcextract -C drwl 28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz
+}
+
+post_install() {
+	vlicense LICENSE
+}

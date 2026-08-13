@@ -138,7 +138,8 @@ update_pkg() {
 
 	distfile="${homepage}/archive/${latest}.tar.gz"
 	checksum=$(curl -fsSL "$distfile" | sha256sum | awk '{print $1}')
-	sed -i "$template" -e "s|^checksum=[a-f0-9]*$|checksum=${checksum}|"
+	# replace only the first checksum so multi-distfile templates keep the rest
+	sed -i "$template" -e "s|^checksum=[0-9a-f]*|checksum=${checksum}|"
 
 	echo "=> $pkg: checksum updated ($checksum)"
 	sync_pkg "$pkg" "$template"
