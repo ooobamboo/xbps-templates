@@ -13,6 +13,10 @@ distfiles="${homepage}/archive/${version}.tar.gz"
 checksum=36907efe6bfaef912894d33a6cbfa445169474c24404c6fafbd8ec4d51d35ae6
 wrksrc="somebar-${version}"
 
+pre_build() {
+	cp src/config.def.hpp src/config.hpp
+}
+
 post_install() {
 	vlicense LICENSE
 }
