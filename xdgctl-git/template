@@ -1,0 +1,32 @@
+# Template file for 'xdgctl-git'
+pkgname=xdgctl-git
+version=5ad45f7745fe2795748cacd7bee33ae1614671c9
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config"
+makedepends="glib-devel"
+short_desc="TUI to manage XDG default applications (git master)"
+maintainer="Mitja Felicijan <mitja.felicijan@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/mitjafelicijan/xdgctl"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=eca633b353d0da3d79353188d2432c94717cd60607a70e8f293f401a7e9dffec
+wrksrc="xdgctl-${version}"
+
+# The Makefile hardcodes CC=clang and computes CFLAGS/LIBS via pkg-config,
+# but its install rule ignores DESTDIR. Build with the toolchain pkg-config
+# flags and install manually.
+do_build() {
+	make CC="$CC" \
+		CFLAGS="$(pkg-config --cflags gio-2.0 gio-unix-2.0)" \
+		LIBS="$(pkg-config --libs gio-2.0 gio-unix-2.0)" \
+		${makejobs}
+}
+
+do_install() {
+	vbin xdgctl
+}
+
+post_install() {
+	vlicense LICENSE
+}
