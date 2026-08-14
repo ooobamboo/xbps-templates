@@ -8,10 +8,10 @@ makedepends="wayland-devel wayland-protocols"
 short_desc="Simple hackable Wayland wallpaper setter (git master)"
 maintainer="sewn <sewn@disroot.org>"
 license="MIT"
-homepage="https://github.com/ooobamboo/wawa"
+homepage="https://codeberg.org/sewn/wawa"
 distfiles="${homepage}/archive/${version}.tar.gz"
-wrksrc="wawa-${version}"
-checksum=c3636d4b5f65e5a08fb95d4e9b8776b53e71616696a2a1458b4f1bb1bac393ba
+wrksrc="wawa"
+checksum=b8ee4cffb1235bd08875a6ebbb3dba64cfb675663be586d5c28b491ebc8f642a
 
 post_install() {
 	vlicense LICENSE

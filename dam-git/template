@@ -9,13 +9,13 @@ makedepends="wayland-devel wayland-protocols fcft-devel pixman-devel"
 short_desc="Itsy-bitsy dwm-esque bar for river (git master)"
 maintainer="sewn <sewn@disroot.org>"
 license="MIT"
-homepage="https://github.com/ooobamboo/dam"
+homepage="https://codeberg.org/sewn/dam"
 distfiles="${homepage}/archive/${version}.tar.gz
- https://github.com/ooobamboo/drwl/archive/28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz"
-checksum="6e767555d085d33c06db507f8939557472edbe5990a68428537c80fc6f5b88fc
- 4117d9c9796f1cd9c95d9ee817b98282e722833ca1b057e7a2d9467181bb0a33"
+ https://codeberg.org/sewn/drwl/archive/28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz"
+checksum="31330663bf4199a2e8b8cb206cf5737b9d167ecc758559680debca82279e3e9b
+ 5b65ce2ef26ee7aa92574f5d58d696dab94b158bbd28fa149e0da1f2c0eb2c5b"
 skip_extraction="28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz"
-wrksrc="dam-${version}"
+wrksrc="dam"
 
 post_extract() {
 	vsrcextract -C drwl 28785d10a350217b4cd067a0175e6ff6d06cc821.tar.gz

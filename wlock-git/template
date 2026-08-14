@@ -8,10 +8,10 @@ makedepends="wayland-devel libxkbcommon-devel libxcrypt-devel wayland-protocols"
 short_desc="Itsy-bitsy session locker for Wayland (git master)"
 maintainer="sewn <sewn@disroot.org>"
 license="MIT"
-homepage="https://github.com/ooobamboo/wlock"
+homepage="https://codeberg.org/sewn/wlock"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=cd14d97c2edd1c20d308eddac08b72a42a7876e9b320efc9cf92fb3de3e3515f
-wrksrc="wlock-${version}"
+wrksrc="wlock"
+checksum=06ca17aad1732c32174376857310783dfa1ab41d4f8d1c50665e12bc7a6f4ef8
 
 post_install() {
 	vlicense LICENSE
