@@ -136,7 +136,13 @@ update_pkg() {
 	echo "=> $pkg: $version -> $latest"
 	sed -i "$template" -e "s|^version=${version}$|version=${latest}|"
 
-	distfile="${homepage}/archive/${latest}.tar.gz"
+	# derive the first distfile URL from the template and substitute the new
+	# version, so any host archive layout (github, gitlab, codeberg, sr.ht) works
+	distfile=$(get_var "$template" distfiles)
+	distfile="${distfile%%$'\n'*}"
+	distfile="${distfile%% *}"
+	distfile="${distfile//\$\{version\}/$latest}"
+	distfile="${distfile//$version/$latest}"
 	checksum=$(curl -fsSL "$distfile" | sha256sum | awk '{print $1}')
 	# replace only the first checksum so multi-distfile templates keep the rest
 	sed -i "$template" -e "s|^checksum=[0-9a-f]*|checksum=${checksum}|"
