@@ -1,0 +1,17 @@
+# Template file for 'fzy-git'
+pkgname=fzy-git
+version=34b88869d022e861da4846c4463aea3ddfb3ff30
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+short_desc="Fast fuzzy text selector (git master)"
+maintainer="John Hawthorn <john@hawthorn.email>"
+license="MIT"
+homepage="https://github.com/jhawthorn/fzy"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=841f8d5b2f2a57790d8d9a68959aae98c178353c02605f917167b0c8a4da07c4
+wrksrc="fzy-${version}"
+
+post_install() {
+	vlicense LICENSE
+}
