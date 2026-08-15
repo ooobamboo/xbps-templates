@@ -1,0 +1,22 @@
+# Template file for 'evi-git'
+pkgname=evi-git
+version=a881f66bfa3a151a28eb546b1392c2cbf62d3e92
+revision=1
+build_style=gnu-configure
+configure_args="--with-features=huge --enable-multibyte --enable-gui=no --without-x
+ --disable-nls --with-tlib=ncursesw --disable-gpm --with-ex-name=evi-ex --with-view-name=evi-view"
+hostmakedepends="pkg-config"
+makedepends="ncurses-devel"
+make_check=no
+python_version=3
+short_desc="Advanced modal text editor (Vim fork, git master)"
+maintainer="Ivan G. <dreamos82@yahoo.it>"
+license="Vim"
+homepage="https://codeberg.org/evi-editor/evi"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=29bd6fbe4e4af58b407276ed57b8b2b59020cb3f32e602526996f7432da042a8
+wrksrc="evi"
+
+post_install() {
+	vlicense LICENSE
+}
