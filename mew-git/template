@@ -1,0 +1,18 @@
+# Template file for 'mew-git'
+pkgname=mew-git
+version=782733ef1283c5e863c19158d11169c5199d0da4
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-protocols wayland-devel"
+makedepends="fcft-devel pixman-devel tllist libxkbcommon-devel"
+short_desc="a efficient dynamic menu for Wayland (git master)"
+maintainer="seriola <aloires@tutamail.com>"
+license="MIT"
+homepage="https://github.com/ooobamboo/mew"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=2261cbd2b0e397506dbf59aba1e7a5eedb32ab5a13d4d45211895128bb4d7eac
+wrksrc="mew-${version}"
+
+post_install() {
+	vlicense LICENSE
+}

@@ -141,8 +141,10 @@ update_pkg() {
 	distfile=$(get_var "$template" distfiles)
 	distfile="${distfile%%$'\n'*}"
 	distfile="${distfile%% *}"
-	distfile="${distfile//\$\{version\}/$latest}"
-	distfile="${distfile//$version/$latest}"
+    distfile="${distfile//\$\{homepage\}/$homepage}"
+	distfile="${distfile//\$homepage/$homepage}"
+    distfile="${distfile//\$\{version\}/$latest}"
+	[ -n "$version" ] && distfile="${distfile//$version/$latest}"
 	checksum=$(curl -fsSL "$distfile" | sha256sum | awk '{print $1}')
 	# replace only the first checksum so multi-distfile templates keep the rest
 	sed -i "$template" -e "s|^checksum=[0-9a-f]*|checksum=${checksum}|"

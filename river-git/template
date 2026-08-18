@@ -1,6 +1,6 @@
 # Template file for 'river-git'
 pkgname=river-git
-version=bfab9ea75985e048ca31b919ccd6dfc676da6dd5
+version=1fe1f7d13b670ed67a69e92d6e84817eb6f775a8
 revision=1
 conflicts="river"
 archs="~i686* ~armv6l* ~armv7l*"
