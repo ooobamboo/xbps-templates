@@ -1,6 +1,6 @@
 # Template file for 'kwm-git'
 pkgname=kwm-git
-version=f8355179dd9f115b78e296885c5790a9d81dd0de
+version=f11cc9d2e1982fd293e5b5424f54bd4170195da6
 revision=1
 build_style=zig-build
 configure_args="-Dpie"
@@ -11,7 +11,7 @@ maintainer="seriola <aloires@tutamail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/ooobamboo/kwm"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=5482f36221fa73d9e1d802a1a68c5def4cf36510db03b5ff075f2dccbfd4fc11
+checksum=44107ff8c26285c9bf126b64ff220c7a792325e00cf463d46f69e5e6bfbd87e8
 wrksrc="kwm-${version}"
 
 # Use host zig (0.16.x via zvm) instead of void-packages zig 0.13.0.
