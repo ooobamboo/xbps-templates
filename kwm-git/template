@@ -1,6 +1,6 @@
 # Template file for 'kwm-git'
 pkgname=kwm-git
-version=f11cc9d2e1982fd293e5b5424f54bd4170195da6
+version=adb10add394ada9d21b46e146acb4e4d4d016c28
 revision=1
 build_style=zig-build
 configure_args="-Dpie"
@@ -9,9 +9,9 @@ makedepends="wayland-devel libxkbcommon-devel pixman-devel fcft-devel"
 short_desc="DWM-like dynamic tiling window manager for River (git master)"
 maintainer="seriola <aloires@tutamail.com>"
 license="GPL-3.0-only"
-homepage="https://github.com/ooobamboo/kwm"
+homepage="https://github.com/kewuaa/kwm"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=44107ff8c26285c9bf126b64ff220c7a792325e00cf463d46f69e5e6bfbd87e8
+checksum=9800e8f0878419e80c88b266a3b5c7dadc250274c6b25310d1804325b56d10b8
 wrksrc="kwm-${version}"
 
 # Use host zig (0.16.x via zvm) instead of void-packages zig 0.13.0.

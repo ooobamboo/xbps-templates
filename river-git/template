@@ -15,7 +15,7 @@ maintainer="Isaac Freund <mail@isaacfreund.com>"
 license="GPL-3.0-only"
 homepage="https://codeberg.org/river/river"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=a4c441640963f43430d0a69233a7b74fcd44d26ca7d32e605d3aff10e1d01c0e
+checksum=3bd9105e87bcb0fc12d7e5c0133dc56b90985dcf2b2048fe9925fadc98cf60a9
 wrksrc="river"
 
 build_options="xwayland"
