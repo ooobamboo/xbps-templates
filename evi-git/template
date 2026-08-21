@@ -1,6 +1,6 @@
 # Template file for 'evi-git'
 pkgname=evi-git
-version=e45dc546b293c098b622fee4a4df94e64f0dfd95
+version=57061ad9585faebe87f6d23a79d4d5e31f300db2
 revision=1
 build_style=gnu-configure
 configure_args="--with-features=huge --enable-multibyte --enable-gui=no --without-x
@@ -14,7 +14,7 @@ maintainer="Ivan G. <dreamos82@yahoo.it>"
 license="Vim"
 homepage="https://codeberg.org/evi-editor/evi"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=000dd15fbb95ae4003c916163093269aa72c18c9418488da3012c9d7fdf5b9d1
+checksum=f48744853be23fe63fa48d5f1d92d3a4289556fa7a52578c56e0b8f64eda12bb
 wrksrc="evi"
 
 post_install() {
