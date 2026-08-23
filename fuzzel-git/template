@@ -13,7 +13,7 @@ maintainer="Daniel Eklöf <daniel@ekloef.se>"
 license="MIT"
 homepage="https://codeberg.org/dnkl/fuzzel"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=2f24a482d6f9d53c7e6a81e5c8942e6c7fdbf129b640b293343c5b670cf42344
+checksum=8208887cc93899c560e7543b118c0763167b2096bc9407135f2bee952cef0447
 wrksrc="fuzzel"
 
 post_install() {

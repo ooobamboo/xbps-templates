@@ -78,9 +78,14 @@ build_pkgs() {
 		sync_pkg "$pkg" "$pkg/template"
 	done
 
+	# xbps-src's `pkg` target only builds a single package per invocation
+	# (further arguments are ignored), so build each one individually.
 	echo "=> building: ${args[*]}"
 	cd "$VP"
-	./xbps-src -b pkg "${args[@]}"
+	for pkg in "${args[@]}"; do
+		echo "==> $pkg"
+		./xbps-src -b pkg "$pkg" || { echo "error: $pkg failed to build" >&2; return 1; }
+	done
 }
 
 upgrade_pkgs() {
@@ -111,6 +116,14 @@ sync_pkg() {
 	echo "=> $pkg: synced to $sync/template"
 }
 
+# replace only the first checksum hex token, keeping any remaining
+# (multi-distfile) checksum lines and the quoting style of the original value
+set_first_checksum() {
+	local template="$1" newsum="$2"
+	NEWSUM="$newsum" perl -0pi -e \
+		's/^checksum=\K([""]?)[0-9a-fA-F]+/$1 . $ENV{NEWSUM}/me' "$template"
+}
+
 update_pkg() {
 	local pkg="$1"
 	local template="$pkg/template"
@@ -119,7 +132,7 @@ update_pkg() {
 		return 1
 	fi
 
-	local homepage version latest distfile checksum
+	local homepage version latest distfile checksum tmp magic
 	homepage=$(get_var "$template" homepage)
 	version=$(get_var "$template" version)
 	[ -n "$homepage" ] || { echo "error: $pkg: homepage not set" >&2; return 1; }
@@ -134,20 +147,37 @@ update_pkg() {
 	fi
 
 	echo "=> $pkg: $version -> $latest"
-	sed -i "$template" -e "s|^version=${version}$|version=${latest}|"
 
 	# derive the first distfile URL from the template and substitute the new
 	# version, so any host archive layout (github, gitlab, codeberg, sr.ht) works
 	distfile=$(get_var "$template" distfiles)
 	distfile="${distfile%%$'\n'*}"
 	distfile="${distfile%% *}"
-    distfile="${distfile//\$\{homepage\}/$homepage}"
+	distfile="${distfile//\$\{homepage\}/$homepage}"
 	distfile="${distfile//\$homepage/$homepage}"
-    distfile="${distfile//\$\{version\}/$latest}"
+	distfile="${distfile//\$\{version\}/$latest}"
 	[ -n "$version" ] && distfile="${distfile//$version/$latest}"
-	checksum=$(curl -fsSL "$distfile" | sha256sum | awk '{print $1}')
-	# replace only the first checksum so multi-distfile templates keep the rest
-	sed -i "$template" -e "s|^checksum=[0-9a-f]*|checksum=${checksum}|"
+	if [[ "$distfile" != http* ]]; then
+		echo "error: $pkg: cannot derive a distfile URL from '$(get_var "$template" distfiles)'" >&2
+		return 1
+	fi
+
+	# download the archive and compute its checksum *before* touching the
+	# template, so a failure never leaves a half-updated template behind
+	tmp="$(mktemp)"
+	trap 'rm -f "$tmp"' RETURN
+	curl -fsSL "$distfile" -o "$tmp" || { echo "error: $pkg: cannot download $distfile" >&2; return 1; }
+	magic=$(od -An -tx1 -N6 "$tmp" | tr -d ' \n')
+	case "$magic" in
+		1f8b*) ;;                    # gzip
+		fd377a585a00) ;;             # xz
+		*) echo "error: $pkg: '$distfile' does not look like a tarball" >&2; return 1 ;;
+	esac
+	checksum=$(sha256sum "$tmp" | awk '{print $1}')
+
+	sed -i "$template" -e "s|^version=${version}$|version=${latest}|"
+	grep -q "^version=${latest}$" "$template" || { echo "error: $pkg: failed to update version line" >&2; return 1; }
+	set_first_checksum "$template" "$checksum"
 
 	echo "=> $pkg: checksum updated ($checksum)"
 	sync_pkg "$pkg" "$template"
