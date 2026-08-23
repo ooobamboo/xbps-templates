@@ -3,7 +3,7 @@ pkgname=kwm-git
 version=adb10add394ada9d21b46e146acb4e4d4d016c28
 revision=1
 build_style=zig-build
-configure_args="-Dpie"
+configure_args="-Dpie -Dkwim=false"
 hostmakedepends="pkg-config wayland-protocols"
 makedepends="wayland-devel libxkbcommon-devel pixman-devel fcft-devel"
 short_desc="DWM-like dynamic tiling window manager for River (git master)"

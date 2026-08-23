@@ -1,6 +1,6 @@
 # Template file for 'river-git'
 pkgname=river-git
-version=1fe1f7d13b670ed67a69e92d6e84817eb6f775a8
+version=576a58da94ef25bc6a4efabeebaf8c8ffe7414d3
 revision=1
 conflicts="river"
 archs="~i686* ~armv6l* ~armv7l*"
@@ -15,7 +15,7 @@ maintainer="Isaac Freund <mail@isaacfreund.com>"
 license="GPL-3.0-only"
 homepage="https://codeberg.org/river/river"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=3bd9105e87bcb0fc12d7e5c0133dc56b90985dcf2b2048fe9925fadc98cf60a9
+checksum=831dd0cb16822b99827713b2d943408dde20fef46c13b1c4e4037b8a9ffdadf2
 wrksrc="river"
 
 build_options="xwayland"

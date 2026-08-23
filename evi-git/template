@@ -2,20 +2,20 @@
 pkgname=evi-git
 version=57061ad9585faebe87f6d23a79d4d5e31f300db2
 revision=1
+conflicts="evi"
+python_version=3
 build_style=gnu-configure
-configure_args="--with-features=huge --enable-multibyte --enable-gui=no --without-x
- --disable-nls --with-tlib=ncursesw --disable-gpm --with-ex-name=evi-ex --with-view-name=evi-view"
+configure_args="--with-features=normal --with-tlib=ncursesw"
 hostmakedepends="pkg-config"
 makedepends="ncurses-devel"
-make_check=no
-python_version=3
+depends="wl-clipboard"
 short_desc="Advanced modal text editor (Vim fork, git master)"
 maintainer="Ivan G. <dreamos82@yahoo.it>"
 license="Vim"
 homepage="https://codeberg.org/evi-editor/evi"
 distfiles="${homepage}/archive/${version}.tar.gz"
 checksum=f48744853be23fe63fa48d5f1d92d3a4289556fa7a52578c56e0b8f64eda12bb
-wrksrc="evi"
+wrksrc="evi-${version}"
 
 post_install() {
 	vlicense LICENSE
