@@ -1,0 +1,22 @@
+# Template file for 'vim-classic-git'
+pkgname=vim-classic-git
+version=aa7c2c6e071eaf37019f14ad531cfdddc3076f2f
+revision=1
+conflicts="vim"
+python_version=3
+build_style=gnu-configure
+configure_args="--with-features=normal --with-tlib=ncursesw"
+hostmakedepends="pkg-config"
+makedepends="ncurses-devel"
+depends="wl-clipboard"
+short_desc="Long-term maintenance of Vim 8.x"
+maintainer="sircmpwn <vim-classic-devel@lists.sr.ht>"
+license="Vim"
+homepage="https://git.sr.ht/~sircmpwn/vim-classic"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=e16ae07e466fff42c0660a1ec8b1f791d406fe77e5b9f38e352eba194352d449
+wrksrc="vim-classic-${version}"
+
+post_install() {
+	vlicense LICENSE
+}
