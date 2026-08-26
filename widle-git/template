@@ -1,0 +1,18 @@
+# Template file for 'widle-git'
+pkgname=widle-git
+version=8d3575f8112a3ef7e909a093d91b3b05cdda0293
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config wayland-protocols wayland-devel"
+short_desc="Run a command upon becoming idle"
+maintainer="sewn <sewn@disroot.org>"
+license="MIT"
+homepage="https://codeberg.org/sewn/widle"
+distfiles="${homepage}/archive/${version}.tar.gz"
+wrksrc="widle-${version}"
+checksum=45e614bebccf636b89eadb84991d4c84609816bd16c3644e4a54d9bc3c213518
+
+post_install() {
+	vlicense LICENSE
+}
+

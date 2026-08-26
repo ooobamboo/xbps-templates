@@ -121,7 +121,7 @@ sync_pkg() {
 set_first_checksum() {
 	local template="$1" newsum="$2"
 	NEWSUM="$newsum" perl -0pi -e \
-		's/^checksum=\K([""]?)[0-9a-fA-F]+/$1 . $ENV{NEWSUM}/me' "$template"
+		's/^checksum=\K([""]?)[0-9a-fA-F]*/$1 . $ENV{NEWSUM}/me' "$template"
 }
 
 update_pkg() {
