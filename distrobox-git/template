@@ -1,0 +1,24 @@
+# Template file for 'distrobox-git'
+pkgname=distrobox-git
+version=cb4caefda4722c85a71bea04ad6741702e394fe3
+revision=1
+noarch=yes
+hostmakedepends="curl tar"
+depends="bash hicolor-icon-theme"
+opt_depends="docker: Docker support
+ podman: Podman support"
+short_desc="Use any linux distribution inside your terminal (git master)"
+maintainer="seriola <aloires@tutamail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/89luca89/distrobox"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=7276747ac1129d348e3cb58fe6c9155f859cd3a180de611e537dd923222aaaa0
+provides="distrobox-${version}_${revision}"
+conflicts="distrobox"
+
+do_install() {
+	./install -P "${DESTDIR}/usr"
+	vdoc docs/README.md
+	vdoc docs/compatibility.md
+	vdoc docs/useful_tips.md
+}
