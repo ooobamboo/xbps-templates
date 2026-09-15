@@ -1,6 +1,6 @@
 # Template file for 'fuzzel-git'
 pkgname=fuzzel-git
-version=a9d4cab4978119d489a1f58ee91b63c31e33f648
+version=616485c08cd0924af23f0ee9cbf7f104baba2dcc
 revision=1
 conflicts="fuzzel"
 build_style=meson
@@ -13,7 +13,7 @@ maintainer="Daniel Eklöf <daniel@ekloef.se>"
 license="MIT"
 homepage="https://codeberg.org/dnkl/fuzzel"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=023d7fd8d81a43d857c9a58a2c8bd2361ce038abc351eabe181fa781a67828c5
+checksum=30cd469bc5f4fc29eac59776dd8b608cc23241078f81e0de395de9aad6aed49a
 wrksrc="fuzzel"
 
 post_install() {
