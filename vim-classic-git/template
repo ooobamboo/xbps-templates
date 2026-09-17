@@ -1,6 +1,6 @@
 # Template file for 'vim-classic-git'
 pkgname=vim-classic-git
-version=35638d9addb2207cdcf8e4e9ccc3ed0c3e6efbef
+version=4cdb8aa34c7dfcc65bbfcef55541d2bb9abf1d38
 revision=1
 conflicts="vim"
 python_version=3
@@ -13,7 +13,7 @@ maintainer="sircmpwn <vim-classic-devel@lists.sr.ht>"
 license="Vim"
 homepage="https://git.sr.ht/~sircmpwn/vim-classic"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=414927c56d569cb1f65838a31ddcc657010e0f86508c4e541446e1318acbb3e0
+checksum=ad31bb4209fdeec4809fa20e009bf853e292b454ffcfeb730aa52d63541226e5
 wrksrc="vim-classic-${version}"
 
 post_install() {
