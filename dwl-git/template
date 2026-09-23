@@ -1,6 +1,6 @@
 # Template file for 'dwl-git'
 pkgname=dwl-git
-version=dbe9ba07d2f12db6058fee36020b22377a71a353
+version=9378ba73b683e829a35cbe623884511cf26652b8
 revision=1
 build_style=gnu-makefile
 hostmakedepends="pkg-config wayland-protocols wayland-devel"
@@ -11,7 +11,7 @@ maintainer="seriola <aloires@tutamail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/ooobamboo/dwl"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=3da0bf26ce53b16ab92116fae15d7e81dc2bc523b4eebeac96433f0f6fa08257
+checksum=0eb92391467e33039ab0f21699339cf5c3c5343e69b4f393b0b4f60d650c23fa
 wrksrc="dwl-${version}"
 
 post_install() {
