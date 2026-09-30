@@ -1,6 +1,6 @@
 # Template file for 'mew-git'
 pkgname=mew-git
-version=3a2e2ec2ff2e6dbe088b6cf9ed36806ba380f7de
+version=ed49e368f30e01a0b08154e51875fdc225fa547d
 revision=1
 build_style=gnu-makefile
 hostmakedepends="pkg-config wayland-protocols wayland-devel"
@@ -10,7 +10,7 @@ maintainer="seriola <aloires@tutamail.com>"
 license="MIT"
 homepage="https://github.com/ooobamboo/mew"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=2a786e601f5ba43d3a9eb2e7768399803aae828cecdb15ca0e5657495274eb6a
+checksum=5fc2074636f194c56562d64a5fb943ed7b6c203c3f03deb20899e622a81732ac
 wrksrc="mew-${version}"
 
 post_install() {
