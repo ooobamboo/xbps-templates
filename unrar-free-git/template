@@ -1,6 +1,6 @@
 # Template file for 'unrar-free-git'
 pkgname=unrar-free-git
-version=62a255a2f0adbca39034a58a99e4faf4a42a062d
+version=664a9e9da1a3a6ad710c07c2a7388e1970123177
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config automake autoconf libtool"
@@ -10,7 +10,7 @@ maintainer="Bastian Germann <bastiangermann@fishpost.de>"
 license="GPL-2.0-only"
 homepage="https://gitlab.com/bgermann/unrar-free"
 distfiles="https://gitlab.com/bgermann/unrar-free/-/archive/${version}/unrar-free.tar.gz"
-checksum=438246a31cebe3e503c2216eb5a3d7d3b7817b27a986e2fb5d61deb3ef0c7398
+checksum=99803754c40d303f6b2533deabf278cc447cdd1a31a650a2ac0cf7746d7c41c3
 wrksrc="unrar-free-${version}"
 
 # The git archive has no generated configure script.
