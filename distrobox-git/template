@@ -1,6 +1,6 @@
 # Template file for 'distrobox-git'
 pkgname=distrobox-git
-version=4b459007d285e747539dd28046783d028069c67c
+version=a1a0c35ea9390a919cda3ce8c7c3292970f2f575
 revision=1
 noarch=yes
 hostmakedepends="curl tar"
@@ -12,7 +12,7 @@ maintainer="seriola <aloires@tutamail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/89luca89/distrobox"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=1ed3498aa038ac61878030065293a7e70c6871167074e45f9c2cc2feb6187ef0
+checksum=ab43730a7bdc575b57298c71ed67158fad64fb01951bea278daffd28755476d2
 provides="distrobox-${version}_${revision}"
 conflicts="distrobox"
 
