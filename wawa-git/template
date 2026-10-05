@@ -1,6 +1,6 @@
 # Template file for 'wawa-git'
 pkgname=wawa-git
-version=d6f85bfa3a62c044a34ecf83cbf9f1f8f7d4c9d7
+version=2d4debc37d4541e24223fceff1496cbd8f8f5d5d
 revision=1
 build_style=gnu-makefile
 make_use_env=yes
@@ -15,7 +15,7 @@ license="MIT"
 homepage="https://codeberg.org/sewn/wawa"
 distfiles="${homepage}/archive/${version}.tar.gz"
 wrksrc="wawa"
-checksum=e9c736475c315b23bd5d4483fdd087187624e72d3f430601f631d14c76fe1069
+checksum=14bcb0a1b317dbbfd270747a0e62cdbf5f3b62e8aae565fcde73a1fb0c2e8491
 
 post_install() {
 	vlicense LICENSE
